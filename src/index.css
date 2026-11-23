@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paper (light) */
+    --background: 40 33% 94%;
+    --foreground: 30 14% 12%;
+    --card: 40 40% 97%;
+    --card-foreground: 30 14% 12%;
+    --popover: 40 40% 97%;
+    --popover-foreground: 30 14% 12%;
+    --primary: 17 68% 50%;
+    --primary-foreground: 40 40% 98%;
+    --secondary: 38 22% 87%;
+    --secondary-foreground: 30 14% 14%;
+    --muted: 38 22% 89%;
+    --muted-foreground: 30 8% 38%;
+    --accent: 140 18% 84%;
+    --accent-foreground: 150 25% 18%;
+    --destructive: 2 65% 48%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 18% 80%;
+    --input: 35 18% 78%;
+    --ring: 17 68% 50%;
+    --radius: 0.35rem;
+    --sage: 140 25% 38%;
+    --amber: 38 85% 42%;
+    --sky: 195 45% 38%;
+    --term-bg: 30 12% 10%;
+    --term-fg: 40 30% 88%;
+  }
+
+  .dark {
+    /* Ink (dark) */
+    --background: 30 12% 7%;
+    --foreground: 38 30% 89%;
+    --card: 30 11% 10%;
+    --card-foreground: 38 30% 89%;
+    --popover: 30 11% 11%;
+    --popover-foreground: 38 30% 89%;
+    --primary: 18 70% 60%;
+    --primary-foreground: 30 15% 8%;
+    --secondary: 30 9% 16%;
+    --secondary-foreground: 38 30% 89%;
+    --muted: 30 9% 14%;
+    --muted-foreground: 35 10% 62%;
+    --accent: 140 16% 20%;
+    --accent-foreground: 135 30% 78%;
+    --destructive: 3 60% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 9% 20%;
+    --input: 30 9% 22%;
+    --ring: 18 70% 60%;
+    --sage: 135 28% 64%;
+    --amber: 40 80% 62%;
+    --sky: 192 40% 64%;
+    --term-bg: 30 14% 5%;
+    --term-fg: 40 30% 86%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .font-display {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+  .font-mono, code, pre, kbd {
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+}
+
+@layer components {
+  .prose-lesson p { @apply leading-relaxed mb-3; }
+  .prose-lesson ul { @apply list-disc pl-5 mb-3 space-y-1; }
+  .prose-lesson ol { @apply list-decimal pl-5 mb-3 space-y-1; }
+  .prose-lesson code { @apply px-1 py-0.5 rounded bg-muted text-[0.86em]; }
+  .prose-lesson strong { @apply font-semibold; }
+  .prose-lesson a { @apply underline underline-offset-2 text-primary; }
+  .rule-dots {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+  .term {
+    background: hsl(var(--term-bg));
+    color: hsl(var(--term-fg));
+  }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop 0.35s ease-out; }
+@keyframes blink { 50% { opacity: 0; } }
+.caret::after { content: "▋"; animation: blink 1s step-end infinite; margin-left: 2px; }
